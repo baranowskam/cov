@@ -1,0 +1,7 @@
+#include "MyPlayer.h"
+
+#include <QDebug>
+void MyRect::keyPressEvent(QKeyEvent *event)
+{
+    gDebug() <<"MyRect knows that you pressed a key";
+}

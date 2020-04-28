@@ -1,0 +1,5 @@
+
+void MyRect::keyPressEvent(QKeyEvent *event)
+{
+    
+}

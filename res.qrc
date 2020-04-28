@@ -1,0 +1,13 @@
+<RCC>
+    <qresource prefix="/pics">
+        <file>lubella.png</file>
+        <file>mask.png</file>
+        <file>virus.png</file>
+        <file>virus2.png</file>
+        <file>green.png</file>
+        <file>police.png</file>
+        <file>red.png</file>
+        <file>rolka.png</file>
+        <file>tlo.png</file>
+    </qresource>
+</RCC>
