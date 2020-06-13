@@ -8,7 +8,6 @@ public:
     Wynik(QGraphicsItem * parent=0);
     void increase(int pkt); //dodawanie punktacji
     int getScore();
-private:
     int wynik;
 };
 

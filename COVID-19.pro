@@ -1,4 +1,5 @@
-QT       += core gui
+QT       += core gui \
+         multimedia
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -25,7 +26,12 @@ SOURCES += \
     Wirus.cpp \
     Wynik.cpp \
     Zycie.cpp \
-    main.cpp
+    gameover.cpp \
+    koszyk.cpp \
+    main.cpp \
+    serce.cpp \
+    start.cpp \
+    win.cpp
 
 HEADERS += \
     Gra.h \
@@ -36,10 +42,18 @@ HEADERS += \
     Policjant.h \
     Wirus.h \
     Wynik.h \
-    Zycie.h
+    Zycie.h \
+    gameover.h \
+    koszyk.h \
+    serce.h \
+    start.h \
+    win.h
 
 FORMS += \
-    mainwindow.ui
+    gameover.ui \
+    mainwindow.ui \
+    start.ui \
+    win.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

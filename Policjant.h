@@ -10,5 +10,6 @@ public:
     Policjant();
 public slots:
     void move();
+    void move2();
 };
 #endif // POLICJANT_H

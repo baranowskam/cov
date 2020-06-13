@@ -1,4 +1,4 @@
- #ifndef ZYCIE_H
+#ifndef ZYCIE_H
 #define ZYCIE_H
 
 #include <QGraphicsTextItem>

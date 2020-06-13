@@ -5,15 +5,18 @@
 #include <QList>
 #include <QDebug>
 #include <stdlib.h>//rand() -> really large int
+#include <QMediaPlayer>
 #include "Gra.h"
 #include "MyPlayer1.h"
 
 extern Gra * gra;
 
+QMediaPlayer * soundW = new QMediaPlayer();
+
 Wirus::Wirus(): QObject(), QGraphicsPixmapItem()
 {
     //set random position
-    int random_number = rand()%970;
+    int random_number = rand()%(gra->szer);
     setPos(random_number,0);
 
     //drew the ellipse
@@ -35,6 +38,17 @@ void Wirus::move()
     {
         if(typeid(*(colliding_items[i])) == typeid(MyPlayer1))
         {
+            // play get_item_sound
+            soundW->setMedia(QUrl("qrc:/music/FINAL/life gone.mp3"));
+            if (soundW->state() == QMediaPlayer::PlayingState)
+              {
+                soundW->setPosition(0);
+              }
+            else if (soundW->state() == QMediaPlayer::StoppedState)
+              {
+                soundW->play();
+              }
+
             //odejmowanie życia
             gra->zycie->decrease(-1);
 

@@ -5,25 +5,32 @@
 #include <QList>
 #include <stdlib.h> //rand() -> really large int
 #include <QDebug>
+#include <QMediaPlayer>
 #include "Gra.h"
 #include "MyPlayer1.h"
 
 extern Gra * gra;
 
+QMediaPlayer * sound2 = new QMediaPlayer();
+
 Papier::Papier(): QObject(), QGraphicsPixmapItem(){
     //set random position
-    int random_number = rand()%990;
+    int random_number = rand()%(gra->szer);
     setPos(random_number,0);
 
-    //drew the rect
-    //setRect(0,0,20,20);
-    setPixmap(QPixmap(":/pics/rolka.png").scaled(40,40,Qt::KeepAspectRatio));
+    int los = rand()%8;
+    if (los < 1)
+      {
+        //drew the rect
+        //setRect(0,0,20,20);
+        setPixmap(QPixmap(":/pics/rolka.png").scaled(40,40,Qt::KeepAspectRatio));
 
-    //connect
-    QTimer * timerP = new QTimer();
-    connect(timerP,SIGNAL(timeout()),this,SLOT(move()));
+        //connect
+        QTimer * timerP = new QTimer();
+        connect(timerP,SIGNAL(timeout()),this,SLOT(move()));
 
-    timerP->start(130);
+        timerP->start(130);
+      }
 }
 
 void Papier::move()
@@ -36,6 +43,17 @@ void Papier::move()
         {
             //dodawanie punktów
             gra->wynik->increase(5);
+
+            // play get_item_sound
+            sound2->setMedia(QUrl("qrc:/music/FINAL/punkt zdobycie.mp3"));
+            if (sound2->state() == QMediaPlayer::PlayingState)
+              {
+                sound2->setPosition(0);
+              }
+            else if (sound2->state() == QMediaPlayer::StoppedState)
+              {
+                sound2->play();
+              }
 
             scene() -> removeItem(this);
             delete this;

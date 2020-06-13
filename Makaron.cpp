@@ -5,14 +5,17 @@
 #include <QList>
 #include <stdlib.h> //rand() -> really large int
 #include <QDebug>
+#include <QMediaPlayer>
 #include "Gra.h"
 #include "MyPlayer1.h"
 
 extern Gra * gra;
 
+QMediaPlayer * sound = new QMediaPlayer();
+
 Makaron::Makaron(): QObject(), QGraphicsPixmapItem(){
     //set random position
-    int random_number = rand()%985;
+    int random_number = rand()%(gra->szer);
     setPos(random_number,0);
 
     //drew the rect
@@ -37,6 +40,17 @@ void Makaron::move()
         {
             //dodawanie punktów
             gra->wynik->increase(1);
+
+            // play get_item_sound
+            sound->setMedia(QUrl("qrc:/music/FINAL/punkt zdobycie.mp3"));
+            if (sound->state() == QMediaPlayer::PlayingState)
+              {
+                sound->setPosition(0);
+              }
+            else if (sound->state() == QMediaPlayer::StoppedState)
+              {
+                sound->play();
+              }
 
             scene() -> removeItem(this);
             delete this;

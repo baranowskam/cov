@@ -9,5 +9,40 @@
         <file>red.png</file>
         <file>rolka.png</file>
         <file>tlo.png</file>
+        <file>babeczka2.png</file>
+        <file>facet.png</file>
+        <file>heart.png</file>
+        <file>maseczka.png</file>
+        <file>policjant2.png</file>
+    </qresource>
+    <qresource prefix="/music">
+        <file>FINAL/game.mp3</file>
+        <file>FINAL/life back.mp3</file>
+        <file>FINAL/life gone.mp3</file>
+        <file>FINAL/punkt zdobycie.mp3</file>
+        <file>FINAL/punkty strata.mp3</file>
+        <file>FINAL/start.mp3</file>
+        <file>FINAL/GO.mp3</file>
+        <file>FINAL/WIN.mp3</file>
+    </qresource>
+    <qresource prefix="/shop">
+        <file>zakupy/wozek0.png</file>
+        <file>zakupy/wozek1.png</file>
+        <file>zakupy/wozek2.png</file>
+        <file>zakupy/wozek3.png</file>
+        <file>zakupy/wozek4.png</file>
+        <file>zakupy/wozek5.png</file>
+        <file>zakupy/wozek6.png</file>
+        <file>zakupy/wozek7.png</file>
+        <file>zakupy/wozek8.png</file>
+        <file>zakupy/wozek9.png</file>
+        <file>zakupy/wozek0_5.png</file>
+    </qresource>
+    <qresource prefix="/background">
+        <file>tlo/mapa.jpg</file>
+        <file>tlo/shop_bg2.png</file>
+        <file>tlo/shop_bg1.png</file>
+        <file>tlo/bg.png</file>
+        <file>tlo/tlo_mapa.png</file>
     </qresource>
 </RCC>
