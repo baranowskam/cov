@@ -26,7 +26,15 @@ QMediaPlayer * soundP = new QMediaPlayer();
  */
 Policjant::Policjant(): QObject(), QGraphicsPixmapItem()
 {
-    int los = rand()%6;
+    if (gra->poziom==3) // poziom hard
+    {
+        mozliwosc=5;
+    }
+    else if (gra->poziom==1) // poziom easy
+    {
+        mozliwosc=100;
+    }
+    int los = rand()%mozliwosc;
     if (los < 1)
       {
         int random_number = rand()%(gra->wys-100);
@@ -46,7 +54,7 @@ Policjant::Policjant(): QObject(), QGraphicsPixmapItem()
             setPos(gra->szer,random_number);
             connect(timerPO,SIGNAL(timeout()),this,SLOT(move2()));
           }
-        timerPO->start(50);
+        timerPO->start(gra->szybkosc+5);
       }
 }
 

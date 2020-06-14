@@ -1,5 +1,5 @@
 Gracz1
-23
+223
 Asia
 45
 Gosia
@@ -7,4 +7,18 @@ Gosia
 ja
 1
 Martynka
-37
+137
+Gracz41
+173
+Gracz41
+10
+Gracz20315
+14
+abcd
+36
+ja
+4
+martini
+4
+asd
+9

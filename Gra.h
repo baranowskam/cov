@@ -43,6 +43,8 @@ public:
     QString sciezka;
     QString p1 = ":/pics/babeczka2.png";
     QString p2 = ":/pics/facet.png";
+    int poziom=2;
+    int szybkosc, szybkoscStartowa, krok = 0;
 
 private:
     void keyPressEvent(QKeyEvent*event);

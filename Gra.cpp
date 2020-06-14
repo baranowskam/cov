@@ -28,10 +28,7 @@
 // jednak nie dziala ta funkcja sciagajaca sciezke pliku, w kazdym razie niecalkowicie
 // ale nie usuwajcie zadnej sciezki, jedynie dodajcie swoja a reszte wykomentujcie
 QString sciezka_pliku = "C:/Users/dell/Desktop/COVID-19/wyniki.txt";                      // MARTYNA
-//QString sciezka_pliku =                                                                 // ULA
-//QString sciezka_pliku =                                                                 // MICHALINA
-//QString sciezka_pliku =                                                                 // MAGDA
-//QString sciezka_pliku =                                                                 // BARTEK
+//QString sciezka_pliku = "C:/Users/Michalina/Desktop/COVID-19/wyniki.txt";               // MICHALINA
 
 /*!
  Utworzenie głównego okna gry, które będzie zawierało wszystkie elementy - graczy,

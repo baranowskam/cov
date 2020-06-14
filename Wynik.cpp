@@ -17,7 +17,7 @@ Win * graWIN;
 /*!
  Ustawienie wyniku, jaki potrzebny jest do wygrania gry.
  */
-int wygrana = 1;
+int wygrana = 365;
 
 /*!
  Ustawienie wyniku początkowego na 0, wypisanie wyniku na ekranie,
@@ -43,6 +43,10 @@ void Wynik::increase(int pkt)
 {
     wynik=wynik+pkt;
     gra->wartoscWyniku=wynik;
+
+    // szybkosc spadania wzgedem wyniku
+    gra->szybkosc = gra->szybkoscStartowa-wynik/4;
+
     if (wynik > wygrana)
       gra->wartoscWyniku=wygrana;
 
@@ -71,6 +75,21 @@ void Wynik::increase(int pkt)
       gra -> stanKoszyka -> setPixmap(QPixmap(":/shop/zakupy/wozek8.png").scaled(140,140,Qt::KeepAspectRatio));
     else if (wynik<400)
       gra -> stanKoszyka -> setPixmap(QPixmap(":/shop/zakupy/wozek9.png").scaled(140,140,Qt::KeepAspectRatio));
+
+    if (wynik<50)
+      gra->krok=0;
+    else if (wynik<100)
+      gra->krok=1;
+    else if (wynik<150)
+      gra->krok=2;
+    else if (wynik<200)
+      gra->krok=3;
+    else if (wynik<250)
+      gra->krok=4;
+    else if (wynik<300)
+      gra->krok=5;
+    else
+      gra->krok=6;
 
     if (wynik >= wygrana)
       {

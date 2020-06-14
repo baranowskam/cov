@@ -22,6 +22,7 @@ QMediaPlayer * soundW = new QMediaPlayer();
  */
 Wirus::Wirus(): QObject(), QGraphicsPixmapItem()
 {
+
     int random_number = rand()%(gra->szer);
     setPos(random_number,0);
 
@@ -30,7 +31,7 @@ Wirus::Wirus(): QObject(), QGraphicsPixmapItem()
     QTimer * timerW = new QTimer();
     connect(timerW,SIGNAL(timeout()),this,SLOT(move()));
 
-    timerW->start(110);
+    timerW->start(gra->szybkosc+10);
 }
 
 /*!
@@ -64,9 +65,10 @@ void Wirus::move()
             return;
         }
     }
-    setPos(x(),y()+7);
-    if(pos().y() + pixmap().height()<0){
-    scene()->removeItem(this);
-     delete this;
-    }
+    setPos(x(),y()+7+gra->krok);
+    if(pos().y() + pixmap().height()<0)
+      {
+        scene()->removeItem(this);
+        delete this;
+      }
 }

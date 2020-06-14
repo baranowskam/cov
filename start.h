@@ -12,6 +12,7 @@
 #include <QMediaPlayer>
 #include <QMediaPlaylist>
 #include <QLabel>
+#include "Maseczka.h"
 
 namespace Ui {
 class Start;
@@ -33,6 +34,8 @@ public:
 
     int wysS, szerS;
     QRect recS;
+
+    int p;
 
     void keyPressEvent(QKeyEvent*event);
 
@@ -60,6 +63,7 @@ private slots:
     void on_pushButton_clicked();
 
     void on_actionWyniki_triggered();
+
 
 private:
     Ui::Start *ui;

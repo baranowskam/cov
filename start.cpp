@@ -15,7 +15,6 @@
 #include <QStackedWidget>
 
 Gra * gra;
-
 /*!
  Utworzenie okna startowego, w którym wybierany jest tryb gry - single lub multiplayer.
  Istnieje też opcja otworzenia instrukcji.
@@ -43,6 +42,7 @@ Start::Start(QWidget *parent) :
     ui->nick->setFixedSize(ui->label_nick->width(),ui->label_nick->height());
     ui->nick->setFont(QFont("Times",ui->nick->height()*5/9));
 
+    ui->horizontalLayoutWidget->move(10,5);
     ui->label->move(0,wysS/8);
     ui->label_nick->move(szerS/2-ui->label_nick->width()-20,wysS*2/3);
     ui->nick->move(szerS/2+20,wysS*2/3);
@@ -53,6 +53,9 @@ Start::Start(QWidget *parent) :
     ui->label_2->move(szerS/2+20,wysS/2-ui->label_2->height());
     ui->radioButton_1->move(szerS/2-ui->label_1->width()/2-30,wysS/2);
     ui->radioButton_2->move(szerS/2+ui->label_2->width()/2,wysS/2);
+//    ui->radioButton_3->move(szerS/2-ui->label_1->width()/3-10,wysS/3);
+//    ui->radioButton_4->move(szerS/2+ui->label_2->width()/3,wysS/3);
+//    ui->radioButton->move(szerS/2+ui->label_2->width()/3,wysS/3);
     ui->asdw->move(szerS/2-ui->asdw->width()-20,wysS*2/3);
     ui->strzalki->move(szerS/2+20,wysS*2/3);
     ui->cofnij->move(szerS/2-ui->cofnij->width()/2,wysS*2/3+ui->asdw->height()*3/2);
@@ -77,6 +80,7 @@ Start::Start(QWidget *parent) :
     musicS->setPlaylist(playlistS);
     musicS->setPosition(0);
     musicS->play();
+
 }
 
 Start::~Start()
@@ -89,8 +93,10 @@ Start::~Start()
  */
 void Start::on_play_clicked()
 {
+    if (ui->radioButton->isChecked()) p=3;
+    else if (ui->radioButton_4->isChecked()) p=1;
+    else p=2;
     hide();
-    girl = 1;
     gra = new Gra(this);
     gra->showFullScreen();
     musicS->stop();
@@ -105,6 +111,9 @@ qDebug() << "test 20";
       gra -> nickGracza = "Gracz"+QString::number(rand());
     gra -> gracz = new Gracz();
     gra -> scene -> addItem(gra->gracz);
+    gra -> poziom = p;
+    gra->szybkoscStartowa = 105;
+    gra->szybkosc=gra->szybkoscStartowa;
 }
 
 /*!
@@ -112,7 +121,13 @@ qDebug() << "test 20";
  */
 void Start::on_play_2_clicked()
 {
+    if (ui->radioButton->isChecked()) p=3;
+    else if (ui->radioButton_4->isChecked()) p=1;
+    else p=2;
   // wybor gracza/klawiszy
+    ui->radioButton_3->hide();
+    ui->radioButton_4->hide();
+    ui->radioButton-> hide();
     ui->label->hide();
     ui->play->hide();
     ui->play_2->hide();
@@ -139,6 +154,9 @@ void Start::on_asdw_clicked()
   hide();
 
   gra = new Gra(this);
+  gra -> poziom = p;
+  gra->szybkoscStartowa = 150;
+  gra->szybkosc=gra->szybkoscStartowa;
   gra->showFullScreen();
   musicS->stop();
   if (ui->radioButton_1->isChecked())
@@ -171,6 +189,9 @@ void Start::on_strzalki_clicked()
 {
   hide();
   gra = new Gra(this);
+  gra -> poziom = p;
+  gra->szybkoscStartowa = 150;
+  gra->szybkosc=gra->szybkoscStartowa;
   gra->showFullScreen();
   musicS->stop();
   if (ui->radioButton_1->isChecked())

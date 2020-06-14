@@ -9,11 +9,10 @@
 #include <QMediaPlayer>
 #include "Gra.h"
 #include "MyPlayer1.h"
+#include "start.h"
 
 extern Gra * gra;
-
 QMediaPlayer * soundM = new QMediaPlayer();
-
 /*!
  Określenie pozycji (losowej), na której utworzy się obiekt maseczka.
  Zakres, na jakim może utworzyć się obiekt, to szerokość ekranu gry.
@@ -22,10 +21,19 @@ QMediaPlayer * soundM = new QMediaPlayer();
  możliwe jest określenie interwałów w jakich będzie tworzył się nasz obiekt.
  */
 Maseczka::Maseczka(): QObject(), QGraphicsPixmapItem(){
+
+    if (gra->poziom==3) // poziom hard
+    {
+        mozliwosc=100;
+    }
+    else if (gra->poziom==1) // poziom easy
+    {
+        mozliwosc=8;
+    }
     int random_number = rand()%(gra->szer);
     setPos(random_number,0);
 
-    int los = rand()%15;
+    int los = rand()%mozliwosc;
     if (los < 1)
       {
         setPixmap(QPixmap(":/pics/maseczka.png").scaled(60,40,Qt::KeepAspectRatio));
@@ -33,7 +41,7 @@ Maseczka::Maseczka(): QObject(), QGraphicsPixmapItem(){
         QTimer * timerM = new QTimer();
         connect(timerM,SIGNAL(timeout()),this,SLOT(move()));
 
-        timerM->start(150);
+        timerM->start(gra->szybkosc);
       }
 
 }

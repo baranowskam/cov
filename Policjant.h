@@ -11,5 +11,7 @@ public:
 public slots:
     void move();
     void move2();
+private:
+    int mozliwosc=11;
 };
 #endif // POLICJANT_H

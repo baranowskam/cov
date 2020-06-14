@@ -23,13 +23,13 @@ QMediaPlayer * sound2 = new QMediaPlayer();
 Papier::Papier(): QObject(), QGraphicsPixmapItem(){
     int random_number = rand()%(gra->szer);
     setPos(random_number,0);
-    int los = rand()%8;
+    int los = rand()%5;
     if (los < 1)
       {
         setPixmap(QPixmap(":/pics/rolka.png").scaled(40,40,Qt::KeepAspectRatio));
         QTimer * timerP = new QTimer();
         connect(timerP,SIGNAL(timeout()),this,SLOT(move()));
-        timerP->start(130);
+        timerP->start(gra->szybkosc+40);
       }
 }
 

@@ -10,5 +10,6 @@ public:
     Wirus();
 public slots:
     void move();
+private :
 };
 #endif // WIRUS_H

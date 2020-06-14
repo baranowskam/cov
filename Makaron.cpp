@@ -21,6 +21,8 @@ QMediaPlayer * sound = new QMediaPlayer();
  możliwe jest określenie interwałów w jakich będzie tworzył się nasz obiekt.
 */
 Makaron::Makaron(): QObject(), QGraphicsPixmapItem(){
+
+
     int random_number = rand()%(gra->szer);
     setPos(random_number,0);
 
@@ -28,7 +30,7 @@ Makaron::Makaron(): QObject(), QGraphicsPixmapItem(){
 
     QTimer * timerN = new QTimer();
     connect(timerN,SIGNAL(timeout()),this,SLOT(move()));
-    timerN->start(120);
+    timerN->start(gra->szybkosc+10);
 }
 
 /*!
