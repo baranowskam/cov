@@ -27,6 +27,7 @@ SOURCES += \
     Wynik.cpp \
     Zycie.cpp \
     gameover.cpp \
+    gracz.cpp \
     koszyk.cpp \
     main.cpp \
     serce.cpp \
@@ -44,6 +45,7 @@ HEADERS += \
     Wynik.h \
     Zycie.h \
     gameover.h \
+    gracz.h \
     koszyk.h \
     serce.h \
     start.h \

@@ -12,7 +12,13 @@
 #include "start.h"
 #include "serce.h"
 #include "koszyk.h"
+#include "gracz.h"
 
+/*!
+ Utworzenie klasy Gra, która zawiera wszystkie elementy, które zawierać
+ będzie okno gry, czyli graczy, obiekty pozytywne oraz negatywne,
+ wynik, życie, tło oraz podkład muzyczny.
+ */
 class Gra:public QGraphicsView
 {
 public:
@@ -25,12 +31,16 @@ public:
     MyPlayer1 *player2;
     int w=50, h=120;
     Wynik *wynik;
+    int wartoscWyniku=0;
     Zycie *zycie;
     QTimer *timer;
     Serce *s1, *s2, *s3;
     Koszyk *stanKoszyka;
+    Gracz *gracz;
     QMediaPlaylist *playlist = new QMediaPlaylist();
     QMediaPlayer *music = new QMediaPlayer();
+    QString nickGracza;
+    QString sciezka;
     QString p1 = ":/pics/babeczka2.png";
     QString p2 = ":/pics/facet.png";
 

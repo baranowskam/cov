@@ -1,14 +1,8 @@
 <RCC>
     <qresource prefix="/pics">
         <file>lubella.png</file>
-        <file>mask.png</file>
-        <file>virus.png</file>
         <file>virus2.png</file>
-        <file>green.png</file>
-        <file>police.png</file>
-        <file>red.png</file>
         <file>rolka.png</file>
-        <file>tlo.png</file>
         <file>babeczka2.png</file>
         <file>facet.png</file>
         <file>heart.png</file>
@@ -39,10 +33,9 @@
         <file>zakupy/wozek0_5.png</file>
     </qresource>
     <qresource prefix="/background">
-        <file>tlo/mapa.jpg</file>
-        <file>tlo/shop_bg2.png</file>
-        <file>tlo/shop_bg1.png</file>
-        <file>tlo/bg.png</file>
         <file>tlo/tlo_mapa.png</file>
+    </qresource>
+    <qresource prefix="/wyniki">
+        <file>wyniki.txt</file>
     </qresource>
 </RCC>

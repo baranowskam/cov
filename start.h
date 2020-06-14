@@ -29,6 +29,7 @@ public:
     QMediaPlayer * musicS = new QMediaPlayer();
 
     bool girl;
+    QString nickStart;
 
     int wysS, szerS;
     QRect recS;
@@ -53,6 +54,12 @@ private slots:
     void on_action_triggered();
 
     void on_actionZako_cz_triggered();
+
+    void on_actionInstrukcja_2_triggered();
+
+    void on_pushButton_clicked();
+
+    void on_actionWyniki_triggered();
 
 private:
     Ui::Start *ui;

@@ -18,15 +18,15 @@
     <property name="geometry">
      <rect>
       <x>0</x>
-      <y>20</y>
+      <y>0</y>
       <width>311</width>
-      <height>151</height>
+      <height>171</height>
      </rect>
     </property>
     <property name="font">
      <font>
       <family>Walt Disney Script v4.1</family>
-      <pointsize>24</pointsize>
+      <pointsize>48</pointsize>
      </font>
     </property>
     <property name="text">
@@ -45,6 +45,11 @@
       <height>23</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
     <property name="text">
      <string>PLAY AGAIN</string>
     </property>
@@ -57,6 +62,11 @@
       <width>81</width>
       <height>23</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
     </property>
     <property name="text">
      <string>EXIT</string>

@@ -10,6 +10,12 @@
 QMediaPlayer * soundWIN = new QMediaPlayer();
 Start * startNowy2;
 
+/*!
+ Utworzenie okna WIN po wygraniu gry, czyli osiągnieciu określonej ilości punktów.
+ Wygraniu gry oraz stworzeniu okna WIN towarzyszy dodatkowo motyw muzyczny. Po zwycięstwie
+ możliwe są dwie opcje do wyboru - zagranie ponownie lub też wyjście z gry. Okno można również
+ wyłączyć ręcznie za pomocą klawisza Esc.
+ */
 Win::Win(QWidget *parent) :
   QMainWindow(parent),
   ui(new Ui::Win)
@@ -20,7 +26,10 @@ Win::Win(QWidget *parent) :
   wysW=recW.height();
   szerW=recW.width();
   ui->centralwidget->setFixedSize(szerW,wysW);
-  ui->label->move(szerW/2-ui->label->width()/2,wysW/3);
+  ui->label->setFixedSize(szerW,wysW/2);
+  ui->pushButton->setFixedSize(120,50);
+  ui->pushButton_2->setFixedSize(120,50);
+  ui->label->move(0,wysW*1/10);
   ui->pushButton->move(szerW/2-ui->pushButton->width()-20,wysW*7/12);
   ui->pushButton_2->move(szerW/2+20,wysW*7/12);
 

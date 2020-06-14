@@ -4,7 +4,7 @@
 #include <QGraphicsRectItem>
 #include <QList>
 #include <QDebug>
-#include <stdlib.h>//rand() -> really large int
+#include <stdlib.h>
 #include <QMediaPlayer>
 #include "Gra.h"
 #include "MyPlayer1.h"
@@ -13,15 +13,24 @@ extern Gra * gra;
 
 QMediaPlayer * soundP = new QMediaPlayer();
 
+/*!
+ Określenie pozycji (losowej), na której utworzy się obiekt policjant.
+ Zakres, na jakim może utworzyć się obiekt, to wysokość ekranu gry, pomijane
+ jest dolne 100 pikseli długości stworzonego okna. Dalej dokonywane jest
+ utworzenie obiektu policjant. Obiekt nie może powstać poza
+ ekranem gry. Dodatkowo dzięki funkcji 'QTimer' możliwe jest określenie
+ interwałów w jakich będzie tworzył się nasz obiekt. Policjant może tworzyć się
+ po dwóch skrajnych stronach okna gry, z lewej lub z prawej. W zależności od miejsca
+ spawnu poruszać się będzie w prawo lub w lewo. Obiekt policjant ma jeden model graficzny,
+ który w zależności od miejsca spawnu jest odbiciem lustrzanym oryginalnego obrazka.
+ */
 Policjant::Policjant(): QObject(), QGraphicsPixmapItem()
 {
     int los = rand()%6;
     if (los < 1)
       {
-        //set random position
         int random_number = rand()%(gra->wys-100);
 
-        //connect
         QTimer * timerPO = new QTimer();
 
         int kierunek = rand()%2;
@@ -37,23 +46,27 @@ Policjant::Policjant(): QObject(), QGraphicsPixmapItem()
             setPos(gra->szer,random_number);
             connect(timerPO,SIGNAL(timeout()),this,SLOT(move2()));
           }
-
         timerPO->start(50);
       }
 }
 
+/*!
+Funkcja, dzięki której obiekt policjant porusza się po ekranie gry (w lewo).
+Funkcja collidingItems() pozwala na 'wpadnięcie' przez gracza na obiekt, kolizja z nim
+powoduje utratę 2 punktów. Spotkanie z policjantem sygnalizowane jest dźwiękiem.
+Jeśli graczowi uda się ominąć stróża prawa i przedmiot dotrze do prawej krawędzi ekranu,
+to po dotknięciu jej zniknie w celu uniknięcia zapychania pamięci komputera
+(przedmiot zostanie usunięty).
+*/
 void Policjant::move()
 {
-    //usuwanie
     QList<QGraphicsItem *> colliding_items = collidingItems();
     for (int i = 0, n = colliding_items.size(); i < n; i++)
     {
         if(typeid(*(colliding_items[i])) == typeid(MyPlayer1))
         {
-            //dodawanie punktów
             gra->wynik->increase(-2);
 
-            // play get_item_sound
             soundP->setMedia(QUrl("qrc:/music/FINAL/punkty strata.mp3"));
             if (soundP->state() == QMediaPlayer::PlayingState)
               {
@@ -63,13 +76,11 @@ void Policjant::move()
               {
                 soundP->play();
               }
-
             scene() -> removeItem(this);
             delete this;
             return;
         }
     }
-    //move policjant right
     setPos(x()+4,y());
     if(pos().x() + pixmap().width()<0)
     {
@@ -78,18 +89,23 @@ void Policjant::move()
     }
 }
 
+/*!
+Funkcja, dzięki której obiekt policjant porusza się po ekranie gry (w prawo).
+Funkcja collidingItems() pozwala na 'wpadnięcie' przez gracza na obiekt, kolizja z nim
+powoduje utratę 2 punktów. Spotkanie z policjantem sygnalizowane jest dźwiękiem.
+Jeśli graczowi uda się ominąć stróża prawa i przedmiot dotrze do lewej krawędzi ekranu,
+to po dotknięciu jej zniknie w celu uniknięcia zapychania pamięci komputera
+(przedmiot zostanie usunięty).
+*/
 void Policjant::move2()
 {
-    //usuwanie
     QList<QGraphicsItem *> colliding_items = collidingItems();
     for (int i = 0, n = colliding_items.size(); i < n; i++)
     {
         if(typeid(*(colliding_items[i])) == typeid(MyPlayer1))
         {
-            //dodawanie punktów
             gra->wynik->increase(-2);
 
-            // play get_item_sound
             soundP->setMedia(QUrl("qrc:/music/FINAL/punkty strata.mp3"));
             if (soundP->state() == QMediaPlayer::PlayingState)
               {
@@ -99,13 +115,11 @@ void Policjant::move2()
               {
                 soundP->play();
               }
-
             scene() -> removeItem(this);
             delete this;
             return;
         }
     }
-    //move policjant right
     setPos(x()-4,y());
     if(pos().x() - pixmap().width()<0)
     {

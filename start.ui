@@ -23,6 +23,11 @@
       <height>41</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
     <property name="text">
      <string>MULTIPLAYER</string>
     </property>
@@ -36,8 +41,13 @@
       <height>41</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
     <property name="text">
-     <string>SINGLEPLAYER</string>
+     <string>SINGLE PLAYER</string>
     </property>
    </widget>
    <widget class="QLabel" name="label">
@@ -49,8 +59,14 @@
       <height>261</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <family>Times New Roman</family>
+      <pointsize>28</pointsize>
+     </font>
+    </property>
     <property name="text">
-     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;Gorączka, kaszel, zmęczenie, ból gardła, a nawet śmierć!&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;Oto nadchodzi niebezpieczny wirus COVID-19! &lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;Zarażenie drogą kropelkową jest bardzo realne, &lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;zatem zachowaj higienę i trzymaj się z daleka od zainfekowanych. &lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;Czy uda Ci się uchronić przed śmiertelnym zagrożeniem? &lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;Przetrwaj, zbierając zapasy makaronu, papieru toaletowego&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;i maseczek ochronnych oraz unikaj kontaktu z policjantami &lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;i &lt;b&gt;wirusem&lt;/b&gt; tak długo jak to możliwe!&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:16pt;&quot;&gt;Gorączka, kaszel, zmęczenie, ból gardła, a nawet śmierć!&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:16pt;&quot;&gt;Oto nadchodzi niebezpieczny wirus COVID-19! &lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:16pt;&quot;&gt;Zarażenie drogą kropelkową jest bardzo realne, &lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:16pt;&quot;&gt;zatem zachowaj higienę i trzymaj się z daleka od zainfekowanych. &lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:16pt;&quot;&gt;Czy uda Ci się uchronić przed śmiertelnym zagrożeniem? &lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:16pt;&quot;&gt;Przetrwaj, zbierając zapasy makaronu, papieru toaletowego&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:16pt;&quot;&gt;i maseczek ochronnych oraz unikaj kontaktu z policjantami &lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:16pt;&quot;&gt;i &lt;/span&gt;&lt;span style=&quot; font-size:16pt; font-weight:600;&quot;&gt;wirusem&lt;/span&gt;&lt;span style=&quot; font-size:16pt;&quot;&gt; tak długo jak to możliwe!&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
@@ -65,6 +81,11 @@
       <height>41</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
     <property name="text">
      <string>←↓→↑</string>
     </property>
@@ -77,6 +98,11 @@
       <width>101</width>
       <height>41</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
     </property>
     <property name="text">
      <string>ASDW</string>
@@ -94,14 +120,14 @@
     <property name="font">
      <font>
       <family>Bauhaus 93</family>
-      <pointsize>14</pointsize>
+      <pointsize>16</pointsize>
      </font>
     </property>
     <property name="text">
-     <string>WYBIERZ GRACZA I KLAWISZE:</string>
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:16pt;&quot;&gt;WYBIERZ GRACZA I KLAWISZE:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
     <property name="textFormat">
-     <enum>Qt::PlainText</enum>
+     <enum>Qt::RichText</enum>
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
@@ -192,6 +218,118 @@
      <string>GRACZ 1</string>
     </property>
    </widget>
+   <widget class="QLabel" name="label_instrukcja">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>30</y>
+      <width>61</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Times New Roman</family>
+     </font>
+    </property>
+    <property name="text">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:24pt; font-weight:600;&quot;&gt;INSTRUKCJA&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:16pt;&quot;&gt;Pandemia koronawirusa trwa, a Twoim zadaniem jest po prostu przetrwać. &lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:16pt;&quot;&gt;Mogłoby się wydawać, że życie toczy się dalej, jednak musisz uchronić się przed najgorszym – &lt;/span&gt;&lt;span style=&quot; font-size:16pt; font-weight:600;&quot;&gt;wirusem&lt;/span&gt;&lt;span style=&quot; font-size:16pt;&quot;&gt;.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:16pt;&quot;&gt;Czego najbardziej potrzebujemy? Zachowanie zasad higieny, pozostanie w domach, a może dużo ruchu i zdrowe odżywianie? &lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:16pt;&quot;&gt;Nic bardziej mylnego, najważniejsze to zdobyć &lt;/span&gt;&lt;span style=&quot; font-size:16pt; font-weight:600;&quot;&gt;makaron&lt;/span&gt;&lt;span style=&quot; font-size:16pt;&quot;&gt;. Będąc więc na spacerze życia, zdobądź tyle, ile zdołasz. &lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:16pt;&quot;&gt;Nie zapomnij również o drugim, niezastąpionym i istotnym – &lt;/span&gt;&lt;span style=&quot; font-size:16pt; font-weight:600;&quot;&gt;papierze toaletowym&lt;/span&gt;&lt;span style=&quot; font-size:16pt;&quot;&gt;. &lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:16pt;&quot;&gt;Jeśli jednak pełny koszyk zakupów nie jest dla Ciebie gwarancją przetrwania, to bardzo dobrze. &lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:16pt;&quot;&gt;Wówczas zwróć uwagę na &lt;/span&gt;&lt;span style=&quot; font-size:16pt; font-weight:600;&quot;&gt;maseczki&lt;/span&gt;&lt;span style=&quot; font-size:16pt;&quot;&gt;, które pozwolą zmniejszyć Twoją szanse na złapanie koronawirusa. &lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:16pt;&quot;&gt;Nie wierzysz? Możesz to sprawdzić, napotykając na swojej drodze &lt;/span&gt;&lt;span style=&quot; font-size:16pt; font-weight:600;&quot;&gt;policjanta&lt;/span&gt;&lt;span style=&quot; font-size:16pt;&quot;&gt;. &lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:16pt;&quot;&gt;On jednak szybko da Ci do zrozumienia, że nie warto – Twoje walecznie zdobyte produkty mogą zostać odebrane. &lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:16pt;&quot;&gt;Najlepiej będzie, jak zostaniesz w domu, ale jeśli potrzebujesz zrobić zakupy, nie zapomnij też, żeby zaopatrzyć swoich dziadków i bliskich. &lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:16pt;&quot;&gt;Idź sam lub weź ze sobą kogoś do pomocy! &lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:16pt;&quot;&gt;Poruszaj się we wszystkie strony świata za pomocą klawiszy ASDW lub ←↓→↑, żeby sprawnie przebyć w zdrowiu cały rok pandemii. &lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:16pt; font-weight:600;&quot;&gt;Podsumowując:&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:16pt;&quot;&gt;Wirus, który odbiera Ci życie może zostać pokonany przez maseczkę. &lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:16pt;&quot;&gt;Makaron i papier toaletowy lepiej mieć w nadmiarze, by przy spotkaniu z policjantem nie zostać z niczym. &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignHCenter|Qt::AlignTop</set>
+    </property>
+   </widget>
+   <widget class="QGraphicsView" name="graphicsView_instrukcja">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>81</width>
+      <height>61</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>41</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>X</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_nick">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>250</y>
+      <width>160</width>
+      <height>27</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Times New Roman</family>
+      <pointsize>18</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Podaj swój nick:</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="nick">
+    <property name="geometry">
+     <rect>
+      <x>270</x>
+      <y>260</y>
+      <width>113</width>
+      <height>20</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_wyniki">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>60</y>
+      <width>47</width>
+      <height>14</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Times New Roman</family>
+      <pointsize>16</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>WYNIKI GRACZY:</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignJustify|Qt::AlignTop</set>
+    </property>
+   </widget>
+   <zorder>label_nick</zorder>
+   <zorder>play</zorder>
+   <zorder>play_2</zorder>
+   <zorder>label</zorder>
+   <zorder>strzalki</zorder>
+   <zorder>asdw</zorder>
+   <zorder>klawisz</zorder>
+   <zorder>cofnij</zorder>
+   <zorder>radioButton_2</zorder>
+   <zorder>radioButton_1</zorder>
+   <zorder>label_1</zorder>
+   <zorder>label_2</zorder>
+   <zorder>nick</zorder>
+   <zorder>graphicsView_instrukcja</zorder>
+   <zorder>label_instrukcja</zorder>
+   <zorder>label_wyniki</zorder>
+   <zorder>pushButton</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
@@ -199,27 +337,30 @@
      <x>0</x>
      <y>0</y>
      <width>402</width>
-     <height>34</height>
+     <height>33</height>
     </rect>
    </property>
    <property name="font">
     <font>
-     <pointsize>16</pointsize>
+     <family>Times New Roman</family>
+     <pointsize>18</pointsize>
     </font>
    </property>
    <widget class="QMenu" name="menuGRA">
     <property name="font">
      <font>
-      <pointsize>16</pointsize>
+      <family>Times New Roman</family>
+      <pointsize>18</pointsize>
      </font>
     </property>
     <property name="title">
-     <string>GRA</string>
+     <string>OPCJE</string>
     </property>
     <widget class="QMenu" name="menuNowa_gra">
      <property name="font">
       <font>
-       <pointsize>16</pointsize>
+       <family>Times New Roman</family>
+       <pointsize>18</pointsize>
       </font>
      </property>
      <property name="title">
@@ -228,11 +369,12 @@
      <widget class="QMenu" name="menuSingle_playey">
       <property name="font">
        <font>
-        <pointsize>16</pointsize>
+        <family>Times New Roman</family>
+        <pointsize>18</pointsize>
        </font>
       </property>
       <property name="title">
-       <string>Single playey</string>
+       <string>Single player</string>
       </property>
       <addaction name="actionASDW"/>
       <addaction name="action"/>
@@ -241,7 +383,8 @@
      <addaction name="actionMultiplayer"/>
     </widget>
     <addaction name="menuNowa_gra"/>
-    <addaction name="actionInstrukcja"/>
+    <addaction name="actionInstrukcja_2"/>
+    <addaction name="actionWyniki"/>
     <addaction name="actionZako_cz"/>
    </widget>
    <addaction name="menuGRA"/>
@@ -262,14 +405,19 @@
     <string>←↓→↑</string>
    </property>
   </action>
-  <action name="actionInstrukcja">
+  <action name="actionZako_cz">
+   <property name="text">
+    <string>Zakończ</string>
+   </property>
+  </action>
+  <action name="actionInstrukcja_2">
    <property name="text">
     <string>Instrukcja</string>
    </property>
   </action>
-  <action name="actionZako_cz">
+  <action name="actionWyniki">
    <property name="text">
-    <string>Zakończ</string>
+    <string>Wyniki</string>
    </property>
   </action>
  </widget>

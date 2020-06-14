@@ -3,7 +3,7 @@
 #include <QGraphicsScene>
 #include <QGraphicsRectItem>
 #include <QList>
-#include <stdlib.h> //rand() -> really large int
+#include <stdlib.h>
 #include <QDebug>
 #include <QMediaPlayer>
 #include "Gra.h"
@@ -13,35 +13,41 @@ extern Gra * gra;
 
 QMediaPlayer * sound = new QMediaPlayer();
 
+/*!
+ Określenie pozycji (losowej), na której utworzy się obiekt makaron.
+ Zakres, na jakim może utworzyć się obiekt, to szerokość ekranu gry.
+ W następnej kolejności tworzenie obiektu makaron. Obiekt
+ nie może powstać poza ekranem gry. Dodatkowo dzięki funkcji 'QTimer'
+ możliwe jest określenie interwałów w jakich będzie tworzył się nasz obiekt.
+*/
 Makaron::Makaron(): QObject(), QGraphicsPixmapItem(){
-    //set random position
     int random_number = rand()%(gra->szer);
     setPos(random_number,0);
 
-    //drew the rect
-    //setRect(0,0,20,40);
     setPixmap(QPixmap(":/pics/lubella.png").scaled(40,80,Qt::KeepAspectRatio));
-    //setTransformOriginPoint(50,50);
-    //setRotation(180);
 
-    //connect
     QTimer * timerN = new QTimer();
     connect(timerN,SIGNAL(timeout()),this,SLOT(move()));
     timerN->start(120);
 }
 
+/*!
+ Funkcja, dzięki której obiekt makaron porusza się po ekranie gry (spadanie).
+ Funkcja collidingItems() pozwala na łapanie przez gracza przedmiotu, pochwycenie obiektu makaron
+ powoduje zdobycia 1 punktu. Złapanie przedmiotu sygnalizowane jest dźwiękiem.
+ Jeśli gracz nie złapie przedmiotu i przedmiot dotrze do dolnej krawędzi ekranu,
+ to po dotknięciu jej zniknie w celu uniknięcia zapychania pamięci komputera
+ (przedmiot zostanie usunięty).
+*/
 void Makaron::move()
 {
-    //usuwanie
     QList<QGraphicsItem *> colliding_items = collidingItems();
     for (int i = 0, n = colliding_items.size(); i < n; i++)
     {
         if(typeid(*(colliding_items[i])) == typeid(MyPlayer1))
         {
-            //dodawanie punktów
             gra->wynik->increase(1);
 
-            // play get_item_sound
             sound->setMedia(QUrl("qrc:/music/FINAL/punkt zdobycie.mp3"));
             if (sound->state() == QMediaPlayer::PlayingState)
               {
@@ -58,9 +64,8 @@ void Makaron::move()
         }
     }
 
-    //move makaron down
     setPos(x(),y()+10);
-// ///////////////////////////////// czy plus 80? wczesniej bylo rect.height()
+
     if(pos().y() + pixmap().height() < 0){
         scene()->removeItem(this);
         delete this;

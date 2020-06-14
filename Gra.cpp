@@ -23,14 +23,30 @@
 #include <QMediaPlayer>
 #include <QMediaPlaylist>
 #include <QDesktopWidget>
+#include <QDir>
 
+// jednak nie dziala ta funkcja sciagajaca sciezke pliku, w kazdym razie niecalkowicie
+// ale nie usuwajcie zadnej sciezki, jedynie dodajcie swoja a reszte wykomentujcie
+QString sciezka_pliku = "C:/Users/dell/Desktop/COVID-19/wyniki.txt";                      // MARTYNA
+//QString sciezka_pliku =                                                                 // ULA
+//QString sciezka_pliku =                                                                 // MICHALINA
+//QString sciezka_pliku =                                                                 // MAGDA
+//QString sciezka_pliku =                                                                 // BARTEK
+
+/*!
+ Utworzenie głównego okna gry, które będzie zawierało wszystkie elementy - graczy,
+ przedmioty pozytywne oraz negatywne, wynik, życie, tło, podkład muzyczny.
+ */
 Gra::Gra (QWidget *parent)
 {
+    QString dir = QDir::homePath();
+    sciezka = dir + "/COVID-19/wyniki.txt";
+    qDebug()<< sciezka;
+    sciezka = sciezka_pliku;
     rec=QApplication::desktop()->screenGeometry();
     wys=rec.height();
     szer=rec.width();
     setWindowTitle("NIE ZŁAP KORONAWIRUSA!");
-    // create a scene
     scene = new QGraphicsScene();
     scene -> setSceneRect(0,0,szer,wys);
     setBackgroundBrush(QBrush(QImage(":/background/tlo/tlo_mapa.png").scaled(szer,wys)));
@@ -38,15 +54,12 @@ Gra::Gra (QWidget *parent)
     setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     setFixedSize(szer,wys);
-
-    //create players
     player1 = new MyPlayer1();
     player1 -> setPixmap(QPixmap(p1).scaled(w,h,Qt::KeepAspectRatio));
     player1->setPos(szer/2-w-10,wys-player1->pixmap().height());
     player2 = new MyPlayer1();
     player2 -> setPixmap(QPixmap(p2).scaled(w,h,Qt::KeepAspectRatio));
     player2->setPos(szer/2+10,wys-player2->pixmap().height());
-    // create the score/health/lives
     stanKoszyka = new Koszyk();
     wynik = new Wynik();
     zycie = new Zycie();
@@ -54,13 +67,12 @@ Gra::Gra (QWidget *parent)
     s2 = new Serce();
     s3 = new Serce();
 
-    s1 -> setPos(0,0);
-    s2 -> setPos(s1->pixmap().width(),0);
-    s3 -> setPos(s1->pixmap().width()+s2->pixmap().width(),0);
+    s1 -> setPos(s1->pixmap().width()*0.5,s1->pixmap().height()*0.5);
+    s2 -> setPos(s1->pixmap().width()*2,s1->pixmap().height()*0.5);
+    s3 -> setPos(s1->pixmap().width()*3.5,s1->pixmap().height()*0.5);
     stanKoszyka -> setPos(szer-stanKoszyka->pixmap().width(),0);
     wynik -> setPos(szer-stanKoszyka->pixmap().width()/2-20,stanKoszyka->pixmap().height());
 
-    // add the items to the scene
     scene -> addItem(player1);
     scene -> addItem(player2);
     scene -> addItem(wynik);
@@ -70,7 +82,6 @@ Gra::Gra (QWidget *parent)
     scene -> addItem(s2);
     scene -> addItem(s3);
 
-    //spawn obiektow
     timer = new QTimer();
     QObject::connect(timer,SIGNAL(timeout()),player1,SLOT(spawn()));
     QObject::connect(timer,SIGNAL(timeout()),player2,SLOT(spawn()));
@@ -79,7 +90,6 @@ Gra::Gra (QWidget *parent)
     setFocusPolicy(Qt::ClickFocus);
     grabKeyboard();
 
-    // play background music
     playlist->addMedia(QUrl("qrc:/music/FINAL/game.mp3"));
     playlist->setPlaybackMode(QMediaPlaylist::Loop);
     music->setPlaylist(playlist);
@@ -88,7 +98,11 @@ Gra::Gra (QWidget *parent)
 
     show();
 }
-
+/*!
+ Funkcja, która pozwala na sterowanie graczami. Gracz może poruszać się w
+ 4 głównych kierunkach świata, czyli na lewo, prawo, w górę lub w dół. Gracz nie
+ może poruszać się po skosie.
+ */
 void Gra::keyPressEvent(QKeyEvent *event)
 {
   switch(event->key())

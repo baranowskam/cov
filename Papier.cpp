@@ -3,7 +3,7 @@
 #include <QGraphicsScene>
 #include <QGraphicsRectItem>
 #include <QList>
-#include <stdlib.h> //rand() -> really large int
+#include <stdlib.h>
 #include <QDebug>
 #include <QMediaPlayer>
 #include "Gra.h"
@@ -13,29 +13,36 @@ extern Gra * gra;
 
 QMediaPlayer * sound2 = new QMediaPlayer();
 
+/*!
+ Określenie pozycji (losowej), na której utworzy się obiekt papier.
+ Zakres, na jakim może utworzyć się obiekt, to szerokość ekranu gry.
+ W następnej kolejności tworzenie obiektu papier toaletowy. Obiekt
+ nie może powstać poza ekranem gry. Dodatkowo dzięki funkcji 'QTimer'
+ możliwe jest określenie interwałów w jakich będzie tworzył się nasz obiekt.
+ */
 Papier::Papier(): QObject(), QGraphicsPixmapItem(){
-    //set random position
     int random_number = rand()%(gra->szer);
     setPos(random_number,0);
-
     int los = rand()%8;
     if (los < 1)
       {
-        //drew the rect
-        //setRect(0,0,20,20);
         setPixmap(QPixmap(":/pics/rolka.png").scaled(40,40,Qt::KeepAspectRatio));
-
-        //connect
         QTimer * timerP = new QTimer();
         connect(timerP,SIGNAL(timeout()),this,SLOT(move()));
-
         timerP->start(130);
       }
 }
 
+/*!
+ Funkcja, dzięki której obiekt papier porusza się po ekranie gry (spadanie).
+ Funkcja collidingItems() pozwala na łapanie przez gracza przedmiotu, pochwycenie obiektu papier
+ powoduje zdobycie 5 punktów. Złapanie przedmiotu sygnalizowane jest dźwiękiem.
+ Jeśli gracz nie złapie przedmiotu i przedmiot dotrze do dolnej krawędzi ekranu,
+ to po dotknięciu jej zniknie w celu uniknięcia zapychania pamięci komputera
+ (przedmiot zostanie usunięty).
+*/
 void Papier::move()
 {
-    //usuwanie
     QList<QGraphicsItem *> colliding_items = collidingItems();
     for (int i = 0, n = colliding_items.size(); i < n; i++)
     {
@@ -54,13 +61,11 @@ void Papier::move()
               {
                 sound2->play();
               }
-
             scene() -> removeItem(this);
             delete this;
             return;
         }
     }
-    //move papier down
     setPos(x(),y()+8);
     if(pos().y() + pixmap().height()<0){
         scene()->removeItem(this);

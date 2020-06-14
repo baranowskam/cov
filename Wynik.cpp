@@ -8,28 +8,43 @@
 #include <QGraphicsItem>
 #include <QGraphicsScene>
 #include <QList>
+#include <QFile>
+#include <QDir>
 
 extern Gra * gra;
 Win * graWIN;
 
-int wygrana = 3;
+/*!
+ Ustawienie wyniku, jaki potrzebny jest do wygrania gry.
+ */
+int wygrana = 1;
 
+/*!
+ Ustawienie wyniku początkowego na 0, wypisanie wyniku na ekranie,
+ określenie koloru oraz czcionki tekstu.
+ */
 Wynik::Wynik(QGraphicsItem *parent): QGraphicsTextItem(parent)
 {
-    //ustawianie wyniku na 0
     wynik = 0;
-
-    //wypisanie wyniku
     setPlainText(QString::number(wynik));
     setDefaultTextColor((Qt::black));
     setFont(QFont("Walt Disney Script v4.1",25));
-    //setFont(QFont("Times",25));
-
 }
 
+/*!
+ Funkcja, która graficznie reprezentuje ilość zdobytych punktów.
+ W zależności od tego, ile punktów udało się zdobyć graczowi (lub graczom)
+ koszyk znajdujący się na ekranie będzie coraz bardziej się zapełniał. Określone
+ zostały przedziały punktowe, w jakich koszyk przyjmuje poszczególne statusy
+ (bardziej lub mniej zapełniony). Gracz nie może mieć mniej niż 0 punktów.
+ Zdobycie określonej liczby punktów spowoduje wygranie gry i wyświetlenie okna WIN.
+ */
 void Wynik::increase(int pkt)
 {
     wynik=wynik+pkt;
+    gra->wartoscWyniku=wynik;
+    if (wynik > wygrana)
+      gra->wartoscWyniku=wygrana;
 
     if (wynik<0)
       wynik=0;
@@ -58,15 +73,32 @@ void Wynik::increase(int pkt)
       gra -> stanKoszyka -> setPixmap(QPixmap(":/shop/zakupy/wozek9.png").scaled(140,140,Qt::KeepAspectRatio));
 
     if (wynik >= wygrana)
+      {
+        QString line1 = gra->nickGracza;
+        QString line2 = QString::number(wynik);
+        QFile fileN(gra->sciezka);
+        if (fileN.exists())
+          qDebug() << "Istnieje";
+        else
+          qDebug() << "Nie istnieje";
+        if(fileN.open(QIODevice::ReadWrite | QIODevice::Text))
           {
-            gra -> music -> stop();
-            gra -> hide();
-            gra -> player1 -> hide();
-            gra -> player2 -> hide();
-            gra -> close();
-            graWIN = new Win();
-            graWIN -> showFullScreen();
+            QTextStream text(&fileN);
+            text.readAll();
+            text << endl << line1 << endl << line2;
+            fileN.flush();
+            fileN.close();
           }
+        else
+          qDebug() << "cos jest nie tak :(";
+        gra -> music -> stop();
+        gra -> hide();
+        gra -> player1 -> hide();
+        gra -> player2 -> hide();
+        gra -> close();
+        graWIN = new Win();
+        graWIN -> showFullScreen();
+      }
 
     setPlainText(QString::number(wynik));
 }

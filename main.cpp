@@ -6,7 +6,6 @@ int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
     Start s;
-    //s.show();
     s.showFullScreen();
     s.setWindowTitle("Nie złap koronawirusa!");
 

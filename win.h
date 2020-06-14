@@ -18,8 +18,7 @@ public:
   int wysW, szerW;
   QRect recW;
 
-private:
-    void keyPressEvent(QKeyEvent*event);
+  void keyPressEvent(QKeyEvent*event);
 
 private slots:
   void on_pushButton_clicked();
